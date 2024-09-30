@@ -1,0 +1,37 @@
+name: docker-pull-push
+on:
+  push:
+    branches:
+      - main
+      
+env:
+  ## 如下信息需要修改
+  # 1、dokcer.io 镜像仓库的信息
+  IMAGE_NAMESPACE: zmquan666  # 如果是docker官方镜像，IMAGE_NAMESPACE用 library
+  IMAGE_NAME: nginx
+  IMAGE_TAG: latest
+  
+  # 2、个人镜像的地址和名称空间 
+  MY_REPO_URL: registry.cn-hangzhou.aliyuncs.com
+  MY_REPO_NAMESPACE: drhub
+  MY_REPO_IMAGENAME: nginx
+  MY_REPO_IMAGE_TAG: latest
+  
+jobs:  
+  login:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Login to ACR      # 配置账号密码登录的步骤，不用修改
+      uses: aliyun/acr-login@v1
+      with:
+        login-server: "${{ env.MY_REPO_URL }}"
+        username: "${{ secrets.REGISTRY_USERNAME }}"
+        password: "${{ secrets.REGISTRY_PASSWORD }}" 
+        
+    - name: pull and push image   # 默认有docker命令，这个不用修改
+      run: |
+        docker info
+        docker pull $IMAGE_NAMESPACE/$IMAGE_NAME:$IMAGE_TAG
+        docker tag  $IMAGE_NAMESPACE/$IMAGE_NAME:$IMAGE_TAG $MY_REPO_URL/$MY_REPO_NAMESPACE/$MY_REPO_IMAGENAME:$MY_REPO_IMAGE_TAG
+        docker push $MY_REPO_URL/$MY_REPO_NAMESPACE/$MY_REPO_IMAGENAME:$MY_REPO_IMAGE_TAG
