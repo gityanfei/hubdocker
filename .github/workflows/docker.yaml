@@ -9,7 +9,7 @@ env:
   # 1、dokcer.io 镜像仓库的信息
   IMAGE_NAMESPACE: library  # 如果是docker官方镜像，IMAGE_NAMESPACE用 library
   IMAGE_NAME: nginx
-  IMAGE_TAG: 1.20
+  IMAGE_TAG: "1.20"
   
   # 2、个人镜像的地址和名称空间 
   MY_REPO_URL: registry.cn-beijing.aliyuncs.com
