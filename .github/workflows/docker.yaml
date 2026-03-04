@@ -7,15 +7,15 @@ on:
 env:
   ## 如下信息需要修改
   # 1、dokcer.io 镜像仓库的信息
-  IMAGE_NAMESPACE: library  # 如果是docker官方镜像，IMAGE_NAMESPACE用 library
-  IMAGE_NAME: nginx
-  IMAGE_TAG: "1.29.5"
+  IMAGE_NAMESPACE: jenkins  # 如果是docker官方镜像，IMAGE_NAMESPACE用 library
+  IMAGE_NAME: jenkins
+  IMAGE_TAG: "2.541.2-lts-rhel-ubi9-jdk25"
   
   # 2、个人镜像的地址和名称空间 
   MY_REPO_URL: registry.cn-beijing.aliyuncs.com
   MY_REPO_NAMESPACE: ack-container
-  MY_REPO_IMAGENAME: nginx
-  MY_REPO_IMAGE_TAG: "1.29.5"
+  MY_REPO_IMAGENAME: jenkins
+  MY_REPO_IMAGE_TAG: "2.541.2-lts-rhel-ubi9-jdk25"
   
 jobs:  
   login:
