@@ -8,14 +8,14 @@ env:
   ## 如下信息需要修改
   # 1、dokcer.io 镜像仓库的信息
   IMAGE_NAMESPACE: eipwork  # 如果是docker官方镜像，IMAGE_NAMESPACE用 library
-  IMAGE_NAME: etcd-host
-  IMAGE_TAG: 3.4.16-2
+  IMAGE_NAME: kuboard
+  IMAGE_TAG: v3
   
   # 2、个人镜像的地址和名称空间 
   MY_REPO_URL: registry.cn-beijing.aliyuncs.com
   MY_REPO_NAMESPACE: ack-container
-  MY_REPO_IMAGENAME: etcd-host
-  MY_REPO_IMAGE_TAG: 3.4.16-2
+  MY_REPO_IMAGENAME: kuboard
+  MY_REPO_IMAGE_TAG: v3
   
 jobs:  
   login:
